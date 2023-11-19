@@ -1,0 +1,11 @@
+.movie-box {
+    max-width: 170px;
+    height: 204px;
+    margin: 10px 10px;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 150px;
+
+    border: 1px dashed #FFFFFF;
+}
