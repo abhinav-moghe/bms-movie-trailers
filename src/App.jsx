@@ -28,7 +28,7 @@ const App = () => {
         const movieList = []
         for (let key in d.moviesData) {
           if (d.moviesData.hasOwnProperty(key)) {
-            movieList.push(d.moviesData[key])
+            movieList.push({ ...d.moviesData[key], Type: 'MOVIE' })
           }
         }
         setData({
@@ -38,6 +38,34 @@ const App = () => {
         setLoading(false)
       })
   }, [])
+
+  const getViewWidth = () => {
+    return window.innerWidth;
+  }
+
+  const getCardWidth = () => {
+    const e = document.getElementById("0");
+    const style = window.getComputedStyle(e);
+    const cw =
+      e.offsetWidth +
+      parseFloat(style.marginLeft) +
+      parseFloat(style.marginRight);
+
+    return cw;
+  }
+
+  const renderMovieInfo = (movie, number) => {
+    const itemsInARow = Math.floor(getViewWidth() / getCardWidth())
+    const rowNumber = Math.ceil(number / itemsInARow)
+
+    data.moviesData.splice((itemsInARow * rowNumber), 0, {
+      EventCode: `${movie.EventCode}_info`,
+      EventName: movie.EventName,
+      Type: 'INFO'
+    })
+
+    setData({ ...data })
+  }
 
   return (
     <>
@@ -50,7 +78,7 @@ const App = () => {
               <Navbar />
 
               <div className="wrapper-content">
-                <MovieList movies={data.moviesData} />
+                <MovieList movies={data.moviesData} onMovieSelect={renderMovieInfo} />
               </div>
             </div>
           </DataContext.Provider>
