@@ -2,5 +2,37 @@
     width: 100%;
     height: 64px;
 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
     background-color: #000000;
 }
+
+.nav-bar-left {
+    width: auto;
+    margin-left: 16px;
+
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.img-logo {
+    width: 129px;
+    height: 40px;
+}
+
+.nav-bar-right {
+    width: auto;
+    margin-right: 16px;
+  
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-start;
+  }

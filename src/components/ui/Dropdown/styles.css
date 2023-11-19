@@ -1,0 +1,46 @@
+.btn-drop-down {
+    width: 158px;
+    height: 32px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    color: #FFFFFF;
+    border: 1px solid #808080;
+    background-color: #000000;
+}
+
+.img-arrow {
+    width: 16px;
+    height: 16px;
+}
+
+.drop-down-wrap {
+    width: 158px;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+
+    list-style: none;
+    background-color: #000000;
+}
+
+.drop-down-list-item {
+    position: relative;
+    padding: 6px;
+
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    align-items: center;
+
+    cursor: pointer;
+    font-size: 14px;
+    color: #FFFFFF;
+}

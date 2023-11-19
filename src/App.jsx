@@ -3,7 +3,7 @@ import './App.css'
 import { createContext, useEffect, useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
 
-const DataContext = createContext()
+export const DataContext = createContext()
 
 const App = () => {
   // TO-DO: remove this
