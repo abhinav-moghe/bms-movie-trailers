@@ -10,8 +10,9 @@
     cursor: pointer;
     font-size: 12px;
     font-weight: 600;
-    color: #FFFFFF;
-    border: 1px solid #808080;
+    color: #49BA8E;
+    border: 1px solid #39916F;
+    border-radius: 6px;
     background-color: #000000;
 }
 
@@ -28,7 +29,7 @@
     z-index: 10;
 
     list-style: none;
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.85);
 }
 
 .drop-down-list-item {
@@ -42,5 +43,9 @@
 
     cursor: pointer;
     font-size: 14px;
-    color: #FFFFFF;
+    color: #B6B6B6;
+}
+
+.drop-down-list-item:hover {
+    color: #49BA8E;
 }
