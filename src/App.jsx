@@ -60,11 +60,14 @@ const App = () => {
     const itemsInARow = Math.floor(getViewWidth() / getCardWidth())
     const rowNumber = Math.ceil(number / itemsInARow)
 
-    data.moviesData.splice((itemsInARow * rowNumber), 0, {
-      EventCode: `${movie.EventCode}_info`,
-      EventName: movie.EventName,
-      Type: 'INFO'
-    })
+    // for a given row, do not add if it is already added
+    if (data.moviesData[(itemsInARow * rowNumber)]?.Type !== 'INFO') {
+      data.moviesData.splice((itemsInARow * rowNumber), 0, {
+        EventCode: `${movie.EventCode}_info`,
+        EventName: movie.EventName,
+        Type: 'INFO'
+      })
+    }
 
     setData({ ...data })
   }
