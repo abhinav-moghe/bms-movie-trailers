@@ -19,19 +19,17 @@ const App = () => {
   console.log(data)
 
   useEffect(() => {
-    setTimeout(() => {
-      // GET languageList and moviesData
-      fetch('https://in.bmscdn.com/m6/static/interview-mock/data.json', { method: 'GET' })
-        .then(response => response.json())
-        .then(d => {
-          // create an array for language list to handle
-          setData({
-            languageList: d.languageList.map(o => { return { text: o, isSelected: false } }),
-            moviesData: d.moviesData
-          });
-          setLoading(false)
-        })
-    }, 2000)
+    // GET languageList and moviesData
+    fetch('https://in.bmscdn.com/m6/static/interview-mock/data.json', { method: 'GET' })
+      .then(response => response.json())
+      .then(d => {
+        // create an array for language list to handle
+        setData({
+          languageList: d.languageList.map(o => { return { text: o, isSelected: false } }),
+          moviesData: d.moviesData
+        });
+        setLoading(false)
+      })
   }, [])
 
   return (
