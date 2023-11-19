@@ -1,4 +1,5 @@
 import './App.css'
+import CloseIcon from './assets/close.png'
 
 import { createContext, useEffect, useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
@@ -72,6 +73,33 @@ const App = () => {
     setData({ ...data })
   }
 
+  const handleDeleteFilter = (name) => {
+    setData(prevData => {
+      const updatedLanguageList = prevData.languageList.map(lang =>
+        lang.text === name ? { ...lang, isSelected: false } : lang
+      )
+      return { ...prevData, languageList: updatedLanguageList }
+    })
+
+    setFilters(prevFilters => {
+      // find the filter by type ('LANG' for language drop-down)
+      const indexOfFilter = prevFilters.findIndex(f => f.type === 'LANG');
+      const updatedFilters = [...prevFilters];
+
+      // if it is checked, update the selected value for the type picked above
+      // else, locate the selected value and remove it
+      const indexOfValue = updatedFilters[indexOfFilter].values.findIndex(v => v === name);
+      if (indexOfValue !== -1) {
+        updatedFilters[indexOfFilter].values = [
+          ...updatedFilters[indexOfFilter].values.slice(0, indexOfValue),
+          ...updatedFilters[indexOfFilter].values.slice(indexOfValue + 1),
+        ];
+      }
+
+      return updatedFilters;
+    })
+  }
+
   return (
     <>
       {
@@ -83,6 +111,21 @@ const App = () => {
               <Navbar />
 
               <div className="wrapper-content">
+                <div className="show-filters">
+                  <p>Applied Filters: </p>
+                  {
+                    filters.map(filter => {
+                      return filter && filter.type === 'LANG' &&
+                        filter.values?.map(
+                          value =>
+                            <div key={value} className='filter-item' onClick={() => handleDeleteFilter(value)}>
+                              {value}
+                              <img src={CloseIcon} className='img-close' />
+                            </div>
+                        )
+                    })
+                  }
+                </div>
                 <MovieList movies={data.filteredMoviesData} onMovieSelect={renderMovieInfo} />
               </div>
             </div>
