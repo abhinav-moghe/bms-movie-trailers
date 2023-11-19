@@ -2,6 +2,16 @@ import MovieInfo from '../MovieInfo/MovieInfo'
 import './styles.css'
 
 const MovieList = ({ movies, onMovieSelect }) => {
+  const getMonth = (movie) => {
+    const date = new Date(movie.ShowDate)
+    return date.toLocaleString('default', { month: 'short' })
+  }
+
+  const getYear = (movie) => {
+    const date = new Date(movie.ShowDate)
+    return date.getFullYear()
+  }
+
   return (
     <>
       {
@@ -15,7 +25,13 @@ const MovieList = ({ movies, onMovieSelect }) => {
             >
               {
                 m.Type === 'MOVIE' ?
-                  <img className='img-movie-box' src={m.EventImageUrl} />
+                  <>
+                    <img className='img-movie-box' src={m.EventImageUrl} />
+                    <div className='txt-top'>
+                      <span className='month'>{getMonth(m)}</span>
+                      <span className='year'>{getYear(m)}</span>
+                    </div>
+                  </>
                   :
                   <MovieInfo />
               }
