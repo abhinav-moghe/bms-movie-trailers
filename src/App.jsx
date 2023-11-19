@@ -1,13 +1,13 @@
 import './App.css'
 
-function App() {
-  return (
-    <div class="container-main">
-      <nav className='nav-bar'>
-        {/* logo, buttons and drop-downs */}
-      </nav>
+import Navbar from './components/Navbar/Navbar'
 
-      <div class="wrapper-content">
+const App = () => {
+  return (
+    <div className="container-main">
+      <Navbar />
+
+      <div className="wrapper-content">
         {/* movies, trailer and info */}
       </div>
     </div>
