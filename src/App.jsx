@@ -7,17 +7,18 @@ import MovieList from './components/MovieList/MovieList'
 export const DataContext = createContext()
 
 const App = () => {
-  // TO-DO: remove this
-  console.clear()
-
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState({
     languageList: [],
     moviesData: [],
+    filteredMoviesData: [],
   })
-
-  // TO-DO: remove this
-  console.log(data)
+  const [filters, setFilters] = useState([
+    { type: 'DATE', values: [] },
+    { type: 'OTHER', values: [] },
+    { type: 'LANG', values: [] },
+    { type: 'GENRE', values: [] },
+  ])
 
   useEffect(() => {
     // GET languageList and moviesData
@@ -34,6 +35,7 @@ const App = () => {
         setData({
           languageList: d.languageList.map(o => { return { text: o, isSelected: false } }),
           moviesData: movieList,
+          filteredMoviesData: movieList,
         });
         setLoading(false)
       })
@@ -73,12 +75,12 @@ const App = () => {
         loading ?
           <p>Loading . . .</p>
           :
-          <DataContext.Provider value={data}>
+          <DataContext.Provider value={{ data, setData, filters, setFilters }}>
             <div className="container-main">
               <Navbar />
 
               <div className="wrapper-content">
-                <MovieList movies={data.moviesData} onMovieSelect={renderMovieInfo} />
+                <MovieList movies={data.filteredMoviesData} onMovieSelect={renderMovieInfo} />
               </div>
             </div>
           </DataContext.Provider>

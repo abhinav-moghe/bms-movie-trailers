@@ -7,7 +7,7 @@ import Dropdown from '../ui/Dropdown/Dropdown'
 import { DataContext } from '../../App'
 
 const Navbar = () => {
-  const { languageList } = useContext(DataContext)
+  const { data } = useContext(DataContext)
 
   return (
     <nav className='container-nav-bar'>
@@ -19,7 +19,7 @@ const Navbar = () => {
       </div>
 
       <div className='nav-bar-right'>
-        <Dropdown displayText={'All Languages'} isMultiSelect={true} options={languageList} />
+        <Dropdown type={'LANG'} displayText={'All Languages'} isMultiSelect={true} options={data.languageList} />
       </div>
     </nav>
   )
