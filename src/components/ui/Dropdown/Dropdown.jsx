@@ -9,6 +9,20 @@ const Dropdown = ({ type, displayText, isMultiSelect, options }) => {
 
   const [open, setOpen] = useState(false)
 
+  const getDisplayText = () => {
+    const indexOfFilter = filters.findIndex(f => f.type === type)
+
+    if (indexOfFilter !== -1) {
+      const length = filters[indexOfFilter]?.values?.length || 0
+
+      if (length > 0) {
+        const result = filters[indexOfFilter].values[0]
+        return length === 1 ? result : `${result} +${length - 1}`
+      }
+    }
+    return displayText
+  }
+
   const onSelect = (e) => {
     const name = e.target.name;
     const checked = e.target.checked;
@@ -65,7 +79,7 @@ const Dropdown = ({ type, displayText, isMultiSelect, options }) => {
       onMouseLeave={() => setOpen(false)}
     >
       <button className='btn-drop-down'>
-        {<span>{displayText}</span>}
+        {<span>{getDisplayText()}</span>}
         <img className='img-arrow' src={DownArrow} />
       </button>
 
