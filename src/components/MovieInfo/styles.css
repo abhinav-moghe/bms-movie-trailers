@@ -3,5 +3,23 @@
     height: 450px;
     margin: 10px;
 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
     background-color: #000000;
+}
+
+.info-box {
+    width: 48%;
+    height: 90%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    color: #808080;
+    border: 1px dashed #808080;
 }
