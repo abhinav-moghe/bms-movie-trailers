@@ -9,6 +9,7 @@ The application is a React-based project designed to showcase a collection of mo
     + Presents detailed movie information container upon clicking a movie thumbnail.
 
 # Scope of Improvement
+    + Handle multiple Movie Info.
     + Integration of Redux: Implement Redux for more efficient and scalable state management.
     + Styling Enhancement: Replace flexbox with CSS grid to fix the display issues with last row.
     + Additional Filters: Additional dropdowns for filtering by genre and other relevant categories.
